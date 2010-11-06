@@ -1,0 +1,104 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=5mm,top=5mm,right=5mm,bottom=5mm]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[lithuanian]{babel}
+\usepackage{multicol}
+\usepackage{fourier}
+
+\begin{document}
+
+\begin{multicols}{2}
+
+  \paragraph{Informacija apie vaizdo įrašą}
+  \begin{verbatim}
+ffmpeg -i video.avi
+  \end{verbatim}
+
+  \paragraph{Paveikslėliai į vaizdo įrašą}
+  \begin{verbatim}
+ffmpeg -f image2 -i *.jpg video.mpg
+  \end{verbatim}
+
+  \paragraph{Vaizdo įrašą į paveikslėlius}
+  \begin{verbatim}
+ffmpeg -i video.mpg nuotrauka_%d.jpg
+  \end{verbatim}
+
+  \paragraph{Vaizdo įrašas į mp3}
+  \begin{verbatim}
+ffmpeg -i video.avi -vn -ar 44100 \
+ -ac 2 -ab 192 -f mp3 music.mp3
+  \end{verbatim}
+
+  \paragraph{Wav į mp3}
+  \begin{verbatim}
+ffmpeg -i sound.wav -vn -ar 44100 \
+ -ac 2 -ab 192 -f mp3 music.mp3
+  \end{verbatim}
+
+  \paragraph{Avi į mpg}
+  \begin{verbatim}
+ffmpeg -i video.avi video.mpg
+  \end{verbatim}
+
+  \paragraph{Mpg į avi}
+  \begin{verbatim}
+ffmpeg -i video.mpg video.avi
+  \end{verbatim}
+
+  \paragraph{Avi į gif}
+  \begin{verbatim}
+ffmpeg -i video.avi video.gif
+  \end{verbatim}
+
+  \paragraph{Garsas į vaizdo įrašą}
+  \begin{verbatim}
+ffmpeg -i sound.wav -i no_sound_video.avi \
+ video_with_sound.avi
+  \end{verbatim}
+
+  \paragraph{Avi į flv}
+  \begin{verbatim}
+ffmpeg -i video.avi -ab 56 -ar 44100 \
+ -b 200 -r 15 -s 320x240 -f flv video.flv
+  \end{verbatim}
+
+  \paragraph{Avi į dv}
+  \begin{verbatim}
+ffmpeg -i video.avi -s pal -r pal -aspect 4:3 \
+ -ar 48000 -ac 2 video.dv
+  \end{verbatim}
+
+  \begin{verbatim}
+ffmpeg -i video.avi -target pal-dv video.dv
+  \end{verbatim}
+
+  \paragraph{Avi į divx}
+  \begin{verbatim}
+ffmpeg -i video.avi -s 320x240 \
+ -vcodec msmpeg4v2 video.avi
+  \end{verbatim}
+
+  \paragraph{Avi į mpeg dvd grotuvams}
+  \begin{verbatim}
+ffmpeg -i video.avi -target pal-dvd \
+ -ps 2000000000 -aspect 16:9 video.mpeg
+  \end{verbatim}
+
+  \paragraph{Avi į 3gp}
+  \begin{verbatim}
+ffmpeg -i video.avi -s 176x144 -vcodec h263 \
+ -r 25 -b 12200 -ab 12200 -ac 1 -ar 8000 video.3gp
+  \end{verbatim}
+
+  \paragraph{Filmuojam ekraną}
+  \begin{verbatim}
+ffmpeg -i x11grapb -s 800x600 \
+ -i :0.0 screencast.mpg
+  \end{verbatim}
+
+
+\end{multicols}
+
+\end{document}
